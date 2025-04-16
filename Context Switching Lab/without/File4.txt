@@ -1,0 +1,4 @@
+ADD 44 6 AddResult
+SUB 30 4 SubResult
+MUL 34 4 MulResult
+DIV 34 8 DivResult

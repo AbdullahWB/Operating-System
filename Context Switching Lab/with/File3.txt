@@ -1,0 +1,3 @@
+DIV 10 2 DivResult
+MOD 15 5 ModResult
+MUL 34 4 MulResult

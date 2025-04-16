@@ -1,0 +1,2 @@
+ADD 44 6 AddResult
+SUB 30 4 SubResult
