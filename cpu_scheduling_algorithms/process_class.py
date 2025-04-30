@@ -1,5 +1,7 @@
 from FCFS import fcfs
 from SJF import sjf
+from SRTF import srtf
+from RR import round_robin
 
 class Process:
     def __init__(self, pid, arrival_time, burst_time, priority=None, queue_level=None):
@@ -33,14 +35,34 @@ with open("sjfInput.txt", "r") as f:
             processes.append(Process(pid, arrival_time, burst_time))
             print(f"Process pid is {pid}: arrival time: {arrival_time}, burst time: {burst_time}")
 
-print("\n========fcfs=========\n")
-fcfsProcess = fcfs(processes)
+# print("\n========fcfs=========\n")
+# fcfsProcess = fcfs(processes)
 
-for process in fcfsProcess:
-    print(f"process{process.pid}: waiting time is {process.waiting_time}ms and TaT is {process.turnaround_time}")
+# for process in fcfsProcess:
+#     print(f"process{process.pid}: waiting time is {process.waiting_time}ms and TaT is {process.turnaround_time}")
     
-print("\n========sjf=========\n")
-sjfProcess = sjf(processes)
+# print("\n========sjf=========\n")
+# sjfProcess = sjf(processes)
 
-for process in sjfProcess:
+# for process in sjfProcess:
+#     print(f"process{process.pid}: waiting time is {process.waiting_time}ms and TaT is {process.turnaround_time}")
+
+print("\n========sjf=========\n")
+srtfProcess, all_time = srtf(processes)
+
+for process in srtfProcess:
     print(f"process{process.pid}: waiting time is {process.waiting_time}ms and TaT is {process.turnaround_time}")
+avg_waiting_time, avg_turnaround_time, avg_completion_time = all_time
+print(f"Average Waiting Time: {avg_waiting_time:.2f}")
+print(f"Average Turnaround Time: {avg_turnaround_time:.2f}")
+print(f"Average Completion Time: {avg_completion_time:.2f}")
+
+print("\n========RR=========\n")
+round_robin_Process, all_time_rr = round_robin(processes, 4)
+
+for process in round_robin_Process:
+    print(f"process{process.pid}: waiting time is {process.waiting_time}ms and TaT is {process.turnaround_time}")
+avg_waiting_time, avg_turnaround_time, avg_completion_time = all_time_rr
+print(f"Average Waiting Time: {avg_waiting_time:.2f}")
+print(f"Average Turnaround Time: {avg_turnaround_time:.2f}")
+print(f"Average Completion Time: {avg_completion_time:.2f}")
